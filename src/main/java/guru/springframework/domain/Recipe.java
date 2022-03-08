@@ -2,6 +2,7 @@ package guru.springframework.domain;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -21,6 +22,12 @@ public class Recipe {
     private String direction;
     //todo add
     //private Difficulty difficulty;
+
+
+    //Una receta tiene muchos ingredientes y los ingredientes tendrán una sola receta.
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients; //Set no deba repetir elementos, el List sí deja repetir elementos
+
     @Lob//Para que almacene datos grandes
     private Byte[] image;
 
@@ -90,6 +97,14 @@ public class Recipe {
 
     public void setDirection(String direction) {
         this.direction = direction;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public Byte[] getImage() {
