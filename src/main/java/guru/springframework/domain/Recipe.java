@@ -31,6 +31,9 @@ public class Recipe {
     @Lob//Para que almacene datos grandes
     private Byte[] image;
 
+    @Enumerated(value = EnumType.STRING)//Con el string se pueden ordenar las opciones, con el ORDINAL no
+    private Difficulty difficulty;
+
     @OneToOne
     private Notes notes;
 
@@ -113,6 +116,14 @@ public class Recipe {
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 
     public Notes getNotes() {
