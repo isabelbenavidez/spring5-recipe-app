@@ -33,7 +33,7 @@ public class Recipe {
     @Enumerated(value = EnumType.STRING)//Con el string se pueden ordenar las opciones, con el ORDINAL no
     private Difficulty difficulty;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
     @ManyToMany
