@@ -3,23 +3,26 @@ package guru.springframework.domain;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * Created by jt on 6/13/17.
+ */
 @Entity
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String description;
 
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getDescription() {
@@ -30,11 +33,11 @@ public class Category {
         this.description = description;
     }
 
-    public Set<Recipe> getRecipe() {
+    public Set<Recipe> getRecipes() {
         return recipes;
     }
 
-    public void setRecipe(Set<Recipe> recipe) {
-        this.recipes = recipe;
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
     }
 }

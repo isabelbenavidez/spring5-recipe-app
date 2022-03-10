@@ -2,6 +2,9 @@ package guru.springframework.domain;
 
 import javax.persistence.*;
 
+/**
+ * Created by jt on 6/13/17.
+ */
 @Entity
 public class Notes {
 
@@ -12,7 +15,7 @@ public class Notes {
     @OneToOne
     private Recipe recipe;
 
-    @Lob //para que se almacenen varios caracteres entre 200 y 250
+    @Lob//Para que se almacenen varios caracteres entre 200 y 250
     private String recipeNotes;
 
     public Long getId() {
