@@ -7,6 +7,8 @@ import guru.springframework.repositories.UnitOfMeasureRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+
+import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -135,14 +137,36 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacamoleRecipe.getCategories().add(americanCategory);
         guacamoleRecipe.getCategories().add(mexicanCategory);
 
+        //Receta 2 - Bread cake
+
+        Recipe breadCakeRecipe = new Recipe();
+
+        breadCakeRecipe.setDescription("Bread Cake");
+        breadCakeRecipe.setPrepTime(10);
+        breadCakeRecipe.setCookTime(10);
+        breadCakeRecipe.setDifficulty(Difficulty.EASY);
+        breadCakeRecipe.setServings(6);
+        breadCakeRecipe.setSource("Chop the bread in little pieces, drop it in the milk \n In other dis you must mix the sugar wit the butter" +
+                "\n mix all the ingredients in a mold an take it to the kiln");
+        Notes breadCakeNote = new Notes();
+        breadCakeNote.setRecipeNotes("This is more delicious if you eat it hot");
+        breadCakeNote.setRecipe(breadCakeRecipe);
+        breadCakeRecipe.setNotes(breadCakeNote);
+
+        breadCakeRecipe.getIngredients().add(new Ingredient("Bread in peaces", new BigDecimal(2), eachUom, breadCakeRecipe));
+        breadCakeRecipe.getIngredients().add(new Ingredient("Butter", new BigDecimal(1), tableSpoonUom, breadCakeRecipe));
+        breadCakeRecipe.getIngredients().add(new Ingredient("Milk", new BigDecimal(1), dashUom, breadCakeRecipe));
+        breadCakeRecipe.getIngredients().add(new Ingredient("Suggar", new BigDecimal(10), tableSpoonUom, breadCakeRecipe));
+        breadCakeRecipe.getIngredients().add(new Ingredient("fluor", new BigDecimal(50), tableSpoonUom, breadCakeRecipe));
+
+
+
         //Add to return list
 
         recipes.add(guacamoleRecipe);
+        recipes.add(breadCakeRecipe);
 
         return recipes;
-
-
-
     }
 
 }
