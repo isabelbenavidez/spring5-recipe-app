@@ -6,6 +6,7 @@ import guru.springframework.domain.Ingredient;
 import guru.springframework.domain.Notes;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -24,13 +25,15 @@ public class Recipe {
     private Integer servings;
     private String source;
     private String url;
+
+    @Lob
     private String directions;
 
     //Una receta tiene muchos ingredientes y los ingredientes tendrán una sola receta.
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients = new HashSet<>();
 
-    @Lob//Para que almacene datos grandes
+    @Lob//Para que almacene datos grandes, mayor de 255 caracteres
     private Byte[] image;
 
     @Enumerated(value = EnumType.STRING)//Con el string se pueden ordenar las opciones, con el ORDINAL no
@@ -43,7 +46,7 @@ public class Recipe {
     @JoinTable(name = "recipe_category",
             joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
 
     public Long getId() {
         return id;
