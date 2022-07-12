@@ -15,18 +15,18 @@ steps:
   # Download and cache dependencies
   - restore_cache:
 keys:
-        -v1-dependencies-{{ checksum "pom.xml"}}
+        -v1-dependencies-{{ checksum "pom.xml" }}
         -v1-dependencies-
-       - run: mvn dependency:go-offline
-       - save_cache:
-paths:
-  - ~/.m2
-key: v1-dependencies-{ checksum "pom.xml" }}
+- run: mvn dependency:go-offline
+- save_cache:
+    paths:
+      - ~/.m2
+    key: v1-dependencies-{ checksum "pom.xml" }}
   # run tests!
   - run: mvn integration-test cobertura:cobertura
   - store_test_results:
-path: target/surefire-reports
--run:
+    path: target/surefire-reports
+  -run:
   name:send to CodeCov
   command: bash<(curl -s https://codecov.io/bash)
 
