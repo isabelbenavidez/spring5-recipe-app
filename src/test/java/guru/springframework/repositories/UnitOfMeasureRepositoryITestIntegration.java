@@ -31,6 +31,6 @@ public class UnitOfMeasureRepositoryITestIntegration extends TestCase {
     @Test
     public void testFindByDescriptionCup(){
         Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Cup");
-        assertEquals("cup", uomOptional.get().getDescription());
+        assertEquals("Cup", uomOptional.get().getDescription());
     }
 }
