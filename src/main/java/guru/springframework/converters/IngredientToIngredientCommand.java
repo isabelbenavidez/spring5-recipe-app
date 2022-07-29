@@ -3,7 +3,9 @@ package guru.springframework.converters;
 import guru.springframework.commands.IngredientCommand;
 import org.springframework.core.convert.converter.Converter;
 import guru.springframework.domain.Ingredient;
+import org.springframework.stereotype.Component;
 
+@Component
 public class IngredientToIngredientCommand implements Converter<Ingredient, IngredientCommand> {
 
     private final UnitOfMeasureCommandToUnitOfMeasure uomConverter;

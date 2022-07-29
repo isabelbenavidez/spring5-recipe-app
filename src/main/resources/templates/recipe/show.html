@@ -11,6 +11,7 @@
           th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
 </head>
 <body>
+<!--/*@thymesVar id="recipe" type="guru".springframework.domain.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="justify-content-center">
         <div class="col-md-6 offset-md-3">
@@ -28,7 +29,6 @@
                             <ul>
                                 <li th:remove="all">cat one</li>
                                 <li th:remove="all">cat two</li>
-                                <!--/*@thymesVar id="recipe" type="guru".springframework.domain.Recipe"*/-->
                                 <li th:each="category : ${recipe.categories}" th:text="${category.getDescription()}">cat three</li>
                             </ul>
                         </div>
