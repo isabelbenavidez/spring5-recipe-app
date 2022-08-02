@@ -5,9 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-/**
- * Created by jt on 6/13/17.
- */
+
 
 @Data
 @EqualsAndHashCode(exclude = {"recipe"})

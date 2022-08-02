@@ -7,7 +7,6 @@ import guru.springframework.domain.Recipe;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 
 import static junit.framework.TestCase.*;
@@ -46,7 +45,7 @@ public class IngredientCommandToIngredientTest {
         command.setDescription(DESCRIPTION);
         UnitOfMeasureCommand unitOfMeasureCommand = new UnitOfMeasureCommand();
         unitOfMeasureCommand.setId(UOM_ID);
-        command.setUnitOfMeasureCommand(unitOfMeasureCommand);
+        command.setUom(unitOfMeasureCommand);
 
         //when
         Ingredient ingredient = converter.convert(command);
